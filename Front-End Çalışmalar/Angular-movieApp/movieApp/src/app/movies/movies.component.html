@@ -1,0 +1,76 @@
+<div *ngIf="getFilm().length > 0; else NoneFilm">
+    <h1>{{title}}</h1>
+</div>
+<div>
+    <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search...">
+</div>
+<ng-template #NoneFilm>
+    <div class="alert alert-warning">Film bulunmadi.</div>
+</ng-template>
+
+<ng-template [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: getPopularFilm()}"></ng-template>
+
+<!-- <ng-template [ngTemplateOutlet]="miniFilm"></ng-template> -->
+
+<div class="card mb-3" *ngFor="let item of movies | filter : searchText ">
+    <div class="row" >
+        <div class="col-sm-3">
+            <img class="img-fluid rounded-start" [src]="item.imageurl" >
+        </div>
+        <div class="col-sm-9">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description  | summary : 10}}</p>
+                
+                <div>
+                    <a href="#" class="btn btn-outline-primary">Details</a>
+                    <button (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<ng-template #miniFilm>
+    <div class="card m-3" *ngFor="let item of movies">
+        <div class="row" >
+            <div class="col-sm-2">
+                <img class="img-fluid rounded-start" [src]="item.imageurl" >
+            </div>
+            <div class="col-sm-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item.description}}</p>
+                    <a href="#" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #popularFilm let-popular="popularmovies">
+    <h1>Popular movies</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+        <div class="col"  *ngFor="let item of popular">
+            <div class="card h-100">              
+
+                <img [src]="item.imageurl" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="card-title">{{item.name}}</h5>
+                  <p class="card-text">{{item.description  | summary : 10}}</p>
+                  <a href="#" class="btn btn-primary">Details</a>
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    
+</ng-template>
