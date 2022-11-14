@@ -11,7 +11,8 @@ import { SummaryPipe } from './pipes/summary';
 import { FormsModule } from '@angular/forms';
 import { Filter } from './pipes/filter';
 import { AlertifyService } from './Services/alertify.service';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module'
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http'
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
     AlertifyService
