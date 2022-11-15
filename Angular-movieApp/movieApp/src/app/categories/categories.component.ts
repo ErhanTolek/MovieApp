@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Category, Categories } from '../models/CategoriesModel';
 import { CategoryServices } from '../Services/category.service';
 
@@ -21,8 +22,11 @@ export class CategoriesComponent implements OnInit {
         this.categories = data;
       }
     )
+    
   }
-  constructor(private http : HttpClient, private CategoryServices : CategoryServices){
+  constructor(private CategoryServices : CategoryServices, private ActivatedRoute : ActivatedRoute){
+
+    
   }
   
   categories1 = new Categories()

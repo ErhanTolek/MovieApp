@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Category } from '../models/CategoriesModel';
@@ -20,15 +21,15 @@ export class MoviesComponent implements OnInit{
   title = "Film Listesi"
   model = new Model();
   searchText: string = "";
-  Movie = this.getFilm();
-
+  
+  categoryId : string;
 
   movies: Movies[]= [];
   
 
 
   alertify1: AlertifyService = new AlertifyService;
-  constructor(private alertify2: AlertifyService, private http : HttpClient, private movieService : MoviesServices){
+  constructor(private alertify2: AlertifyService, private ActivatedRoute: ActivatedRoute, private movieService : MoviesServices){
   }
   ngOnInit(): void {
       this.movieService.getMovies().subscribe(
@@ -36,10 +37,21 @@ export class MoviesComponent implements OnInit{
           this.movies = data
         }
       )
+      this.ActivatedRoute.params.subscribe(
+        params => {
+          
+          this.categoryId = params['id'];
+          console.log(this.categoryId)
+        }
+      )
       }
+
   
-  getFilm(){
-    return this.model.movies;
+  getCategoryFilms(){
+    if(true){
+      return this.movies.filter(i => i.categoryId == this.categoryId)
+    }
+    return this.movies
   }
   getPopularFilm(){
     return this.movies.filter(i => i.isPopular == "True")
