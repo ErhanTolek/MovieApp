@@ -48,7 +48,7 @@ export class MoviesComponent implements OnInit{
 
   
   getCategoryFilms(){
-    if(true){
+    if(this.categoryId){
       return this.movies.filter(i => i.categoryId == this.categoryId)
     }
     return this.movies
