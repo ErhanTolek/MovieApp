@@ -5,28 +5,32 @@
             "name": "Film1", 
             "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
             "imageurl": "assets/img/1.jpeg",
-            "isPopular": "False"
+            "isPopular": "False",
+            "categoryId": "1"
         },
         {
             "id": "2", 
             "name": "Film2", 
             "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
             "imageurl": "assets/img/2.jpeg",
-            "isPopular": "True"
+            "isPopular": "True",
+            "categoryId": "2"
         },
         {
             "id": "3", 
             "name": "Film3", 
             "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
             "imageurl": "assets/img/3.jpeg",
-            "isPopular": "True"
+            "isPopular": "True",
+            "categoryId": "2"
         },
         {
             "id": "4", 
             "name": "Film4", 
             "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
             "imageurl": "assets/img/4.jpeg",
-            "isPopular": "True"
+            "isPopular": "True",
+            "categoryId": "3"
         }
     ],
 
