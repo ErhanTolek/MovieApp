@@ -23,7 +23,9 @@
                 <p class="card-text">{{item.description  | summary : 10}}</p>
                 
                 <div>
-                    <a href="#" class="btn btn-outline-primary">Details</a>
+                    <a 
+                    [routerLink]="['/movies/details', item.id]"
+                     class="btn btn-outline-primary">Details</a>
                     <button (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
                 </div>
             </div>
@@ -66,7 +68,7 @@
                 <div class="card-body">
                   <h5 class="card-title">{{item.name}}</h5>
                   <p class="card-text">{{item.description  | summary : 10}}</p>
-                  <a href="#" class="btn btn-primary">Details</a>
+                  <a [routerLink]="['/movies/details', item.id]" class="btn btn-primary">Details</a>
                 </div>
               </div>
             </div>
