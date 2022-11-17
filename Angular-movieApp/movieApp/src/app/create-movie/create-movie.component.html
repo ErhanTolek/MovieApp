@@ -1,0 +1,26 @@
+<p>create-movie works!</p>
+
+<form >
+    <div class="form-group">
+        <label for="">Title</label>
+        <input [value]="title" type="text" class="form-control mt-1" name="" id="" placeholder="Movie Title">
+    </div>
+    <div class="form-group mt-4">
+        <label for="">Description</label>
+        <textarea [value]="description" class="form-control mt-1" name="description" placeholder="Movie Description..." cols="70" rows="3"></textarea>
+    </div>
+    <div class="form-group mt-4">
+        <label for="">Image URL</label>
+        <input [value]="url" type="url" class="form-control mt-1" name="" id="" placeholder="Movie/Image/Url">
+    </div>
+    <div class="form-group mt-4">
+        <label for="">Category</label>
+        <div >
+            <select class="form-select mt-1" #category (change)="selectedValue(category.value)">
+                <option *ngFor="let item of categories">{{item.categorie}}</option>
+            </select>
+        </div>
+        
+    </div>
+    <button type="submit" class="btn btn-primary mt-4">Submit</button>
+</form>

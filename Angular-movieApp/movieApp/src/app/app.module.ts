@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { Filter } from './pipes/filter';
 import { AlertifyService } from './Services/alertify.service';
 import {HttpClientModule} from '@angular/common/http';
-import { AppRoutingModule } from './app-routing.module'
+import { AppRoutingModule } from './app-routing.module';
+import { CreateMovieComponent } from './create-movie/create-movie.component'
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AppRoutingModule } from './app-routing.module'
     MovieComponent,
     MovieDetailsComponent,
     SummaryPipe,
-    Filter
+    Filter,
+    CreateMovieComponent
   ],
   imports: [
     BrowserModule,
