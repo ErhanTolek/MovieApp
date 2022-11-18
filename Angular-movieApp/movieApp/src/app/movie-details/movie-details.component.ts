@@ -13,7 +13,7 @@ import { MoviesServices } from '../Services/movies.service';
 })
 export class MovieDetailsComponent implements OnInit {
 
-  movieId: string
+  movieId: number;
   movie: Movies [] = []
   constructor(private route: ActivatedRoute, private movies: MoviesServices, public MoviesComponent : MoviesComponent) {}
 

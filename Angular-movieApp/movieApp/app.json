@@ -1,55 +1,54 @@
 {
-    "movies" : [
-        {
-            "id": "1", 
-            "name": "Film1", 
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
-            "imageurl": "assets/img/1.jpeg",
-            "isPopular": "False",
-            "categoryId": "1"
-        },
-        {
-            "id": "2", 
-            "name": "Film2", 
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
-            "imageurl": "assets/img/2.jpeg",
-            "isPopular": "True",
-            "categoryId": "2"
-        },
-        {
-            "id": "3", 
-            "name": "Film3", 
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
-            "imageurl": "assets/img/3.jpeg",
-            "isPopular": "True",
-            "categoryId": "2"
-        },
-        {
-            "id": "4", 
-            "name": "Film4", 
-            "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!", 
-            "imageurl": "assets/img/4.jpeg",
-            "isPopular": "True",
-            "categoryId": "3"
-        }
-    ],
-
-    "categories" : [
-        {
-            "id":"1",
-            "categorie":"Comedy"
-        },
-        {
-            "id":"2",
-            "categorie":"Adventure"
-        },
-        {
-            "id":"3",
-            "categorie":"Sci-fi"
-        },
-        {
-            "id":"4",
-            "categorie":"Drama"
-        }
-    ]
+  "movies": [
+    {
+      "id": 1,
+      "name": "Film1",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!",
+      "imageurl": "assets/img/1.jpeg",
+      "isPopular": false,
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "name": "Film2",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!",
+      "imageurl": "assets/img/2.jpeg",
+      "isPopular": true,
+      "categoryId": 2
+    },
+    {
+      "id": 3,
+      "name": "Film3",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!",
+      "imageurl": "assets/img/3.jpeg",
+      "isPopular": true,
+      "categoryId": 2
+    },
+    {
+      "id": 4,
+      "name": "Film4",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro, odit!",
+      "imageurl": "assets/img/4.jpeg",
+      "isPopular": true,
+      "categoryId": 3
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "categorie": "Comedy"
+    },
+    {
+      "id": "2",
+      "categorie": "Adventure"
+    },
+    {
+      "id": "3",
+      "categorie": "Sci-fi"
+    },
+    {
+      "id": "4",
+      "categorie": "Drama"
+    }
+  ]
 }

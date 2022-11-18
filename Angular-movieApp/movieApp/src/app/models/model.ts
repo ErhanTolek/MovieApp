@@ -12,12 +12,12 @@ export class Model{
 }
 
  export interface Movies{
-    id: string;
-    name: string;
-    description : string;
-    imageurl: string;
-    isPopular: string;
-    categoryId : string;
+    id: number;
+    name: any;
+    description : any;
+    imageurl: any;
+    isPopular: boolean;
+    categoryId : number;
 
  }
 

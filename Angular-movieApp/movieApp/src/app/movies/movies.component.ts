@@ -22,7 +22,7 @@ export class MoviesComponent implements OnInit{
   model = new Model();
   searchText: string = "";
   
-  categoryId : string;
+  categoryId : number;
 
   movies: Movies[]= [];
   
@@ -54,7 +54,7 @@ export class MoviesComponent implements OnInit{
     return this.movies
   }
   getPopularFilm(){
-    return this.movies.filter(i => i.isPopular == "True")
+    return this.movies.filter(i => i.isPopular == true)
   }
   
   addList($event: any,movie: Movies){
