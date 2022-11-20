@@ -1,9 +1,12 @@
-<div *ngIf="getCategoryFilms().length > 0; else NoneFilm">
-    <h1>{{title}}</h1>
+<div >
+    <div *ngIf="(movies | getCategorized : categoryId | filter : searchText).length > 0; then Title else NoneFilm"></div>
 </div>
 <div>
     <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search...">
 </div>
+<ng-template #Title>
+        <h1>{{title}}</h1>
+</ng-template>
 <ng-template #NoneFilm>
     <div class="alert alert-warning">Film bulunmadi.</div>
 </ng-template>
