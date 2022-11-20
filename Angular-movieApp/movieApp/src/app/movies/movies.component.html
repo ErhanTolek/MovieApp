@@ -11,9 +11,7 @@
     <div class="alert alert-warning">Film bulunmadi.</div>
 </ng-template>
 
-<ng-template [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: getPopularFilm()}"></ng-template>
-
-<!-- <ng-template [ngTemplateOutlet]="miniFilm"></ng-template> -->
+<ng-template [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: movies | getPopular}"></ng-template>
 
 <div class="card mb-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
     <div class="row" >

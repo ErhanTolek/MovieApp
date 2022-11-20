@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CreateMovieComponent } from './create-movie/create-movie.component'
 import { getCategorized } from './pipes/getCategorized';
+import { getPopular } from './pipes/getPopular';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { getCategorized } from './pipes/getCategorized';
     SummaryPipe,
     Filter,
     getCategorized,
-    CreateMovieComponent
+    CreateMovieComponent,
+    getPopular
   ],
   imports: [
     BrowserModule,
