@@ -12,7 +12,7 @@
 
 <!-- <ng-template [ngTemplateOutlet]="miniFilm"></ng-template> -->
 
-<div class="card mb-3" *ngFor="let item of getCategoryFilms() | filter : searchText ">
+<div class="card mb-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
     <div class="row" >
         <div class="col-sm-3">
             <img class="img-fluid rounded-start" [src]="item.imageurl" >
