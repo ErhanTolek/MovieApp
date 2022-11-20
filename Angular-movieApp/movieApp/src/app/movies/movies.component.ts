@@ -22,7 +22,7 @@ export class MoviesComponent implements OnInit{
   model = new Model();
   searchText: string = "";
   
-  categoryId : number;
+  categoryId : any;
 
   movies: Movies[]= [];
   

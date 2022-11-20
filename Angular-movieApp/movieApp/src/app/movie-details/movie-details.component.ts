@@ -33,8 +33,10 @@ export class MovieDetailsComponent implements OnInit {
 
   getMoviesDetails(){
     return this.movie.filter(
-      i => i.id === this.movieId
+      i => i.id == this.movieId
     )
   }
-
+  deleteMovie(id : any){
+    this.movies.deleteMovies(id).subscribe();
+  }
 }

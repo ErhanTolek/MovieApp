@@ -8,6 +8,9 @@
                     <h5 class="card-title text-uppercase">{{item.name}}</h5>
                     <p class="card-text font-italic">{{item.description}}</p>
                     <button (click)="MoviesComponent.addList($event,item)" class="btn btn-primary mt-5">Add to List</button>
+                    <button 
+                    (click)="deleteMovie(item.id)"
+                    class="btn btn-primary mt-5">Delete Movie</button>
                 </div>
              </div>
         </div>

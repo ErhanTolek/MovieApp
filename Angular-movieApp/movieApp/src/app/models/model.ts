@@ -17,7 +17,7 @@ export class Model{
     description : any;
     imageurl: any;
     isPopular: boolean;
-    categoryId : number;
+    categoryId : any;
 
  }
 
