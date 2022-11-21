@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
 import { Categories, Category } from '../models/CategoriesModel';
 import { Movies } from '../models/model';
@@ -17,7 +18,7 @@ export class CreateMovieComponent implements OnInit {
   movies: Movies[];
   NewMovies : Movies[] = [];
 
-  constructor(private Categoryservice : CategoryServices, private Movies:MoviesServices) {
+  constructor(private Categoryservice : CategoryServices, private Movies:MoviesServices, private router: Router) {
 
    }
 
@@ -51,8 +52,9 @@ export class CreateMovieComponent implements OnInit {
       }
   
 
-    this.Movies.putMovies(newFilm).subscribe()
+    this.Movies.putMovies(newFilm).subscribe();
     
+    this.router.navigateByUrl('movies')
 
   }
 }

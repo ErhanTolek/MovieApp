@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter, pipe } from 'rxjs';
 import { Movies } from '../models/model';
 import { MoviesComponent } from '../movies/movies.component';
@@ -15,7 +15,7 @@ export class MovieDetailsComponent implements OnInit {
 
   movieId: number;
   movie: Movies [] = []
-  constructor(private route: ActivatedRoute, private movies: MoviesServices, public MoviesComponent : MoviesComponent) {}
+  constructor(private route: ActivatedRoute, private movies: MoviesServices, public MoviesComponent : MoviesComponent, private router : Router) {}
 
   ngOnInit(): void {
     this.movies.getMovies().subscribe(
@@ -38,5 +38,6 @@ export class MovieDetailsComponent implements OnInit {
   }
   deleteMovie(id : any){
     this.movies.deleteMovies(id).subscribe();
+    this.router.navigateByUrl('')
   }
 }
