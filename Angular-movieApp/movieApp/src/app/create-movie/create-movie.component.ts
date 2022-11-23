@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, Validators } from '@angular/forms';
+import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
 import { Categories, Category } from '../models/CategoriesModel';
@@ -21,6 +21,7 @@ export class CreateMovieComponent implements OnInit {
   model: any = {
     categoryId: -1
   };
+  url = new FormControl('', Validators.required);
 
   constructor(private Categoryservice : CategoryServices, private Movies:MoviesServices, private router: Router) {
 

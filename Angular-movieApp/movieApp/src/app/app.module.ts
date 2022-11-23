@@ -8,7 +8,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieComponent } from './movies/movie/movie.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { SummaryPipe } from './pipes/summary';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Filter } from './pipes/filter';
 import { AlertifyService } from './Services/alertify.service';
 import {HttpClientModule} from '@angular/common/http';
@@ -35,7 +35,8 @@ import { getPopular } from './pipes/getPopular';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AlertifyService

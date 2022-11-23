@@ -1,4 +1,4 @@
-<form #form="ngForm" (submit)="log(category)">
+<form #form="ngForm" (submit)="log(url)">
 
     <div class="form-group">
         <label for="">Title</label>
@@ -40,11 +40,16 @@
     <div class="form-group mt-4">
         <label for="">Image URL</label>
         <input
-        [(ngModel)]="model.url"
+        [formControl]="url"
         type="url" 
         class="form-control mt-1" 
         name="url" id="" placeholder="Movie/Image/Url"
-        #url="ngModel">
+        >
+        <div>
+            <div *ngIf="url.errors['required'] && form.submitted" class="alert alert-danger mt-1">
+                url is required.
+            </div>
+        </div>
     </div>
 
 
