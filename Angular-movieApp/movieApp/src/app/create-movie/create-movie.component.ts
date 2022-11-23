@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
 import { Categories, Category } from '../models/CategoriesModel';
@@ -11,12 +12,15 @@ import { MoviesServices } from '../Services/movies.service';
   selector: 'app-create-movie',
   templateUrl: './create-movie.component.html',
   styleUrls: ['./create-movie.component.css'],
-  providers: [CategoryServices,MoviesServices]
+  providers: [CategoryServices,MoviesServices,Validators]
 })
 export class CreateMovieComponent implements OnInit {
   categories: Category[];
   movies: Movies[];
   NewMovies : Movies[] = [];
+  model: any = {
+    categoryId: -1
+  };
 
   constructor(private Categoryservice : CategoryServices, private Movies:MoviesServices, private router: Router) {
 
@@ -38,21 +42,45 @@ export class CreateMovieComponent implements OnInit {
   selectedValue(value : string){
     console.log(value)
   }
+  log(x :any){
+    console.log(x);
+  }
 
-  createMovie(title: any ,description: any,url: any,category : any ){
+  createMovie(){
 
-    const newFilm : Movies = 
+    console.log(this.model)
+    
+    
+    if(this.model.url != null){
+      const newFilm : Movies = 
       {
         id : 0,
-        name: title.value,
-        description: description.value,
-        imageurl: url.value,
+        name: this.model.title,
+        description: this.model.description,
+        imageurl: this.model.url,
         isPopular: false,
-        categoryId: category.value
+        categoryId: this.model.categoryId
       }
+      this.Movies.putMovies(newFilm).subscribe();
+    }
+    else{
+      const newFilm : Movies = 
+      {
+        id : 0,
+        name: this.model.title,
+        description: this.model.description,
+        imageurl: "assets/img/181-200x300.jpg",
+        isPopular: false,
+        categoryId: this.model.categoryId
+      }
+      this.Movies.putMovies(newFilm).subscribe();
+    }
+    
+    
+    
   
 
-    this.Movies.putMovies(newFilm).subscribe();
+    
     
     this.router.navigateByUrl('movies')
 
