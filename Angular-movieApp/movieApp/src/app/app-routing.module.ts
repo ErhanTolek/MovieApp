@@ -5,8 +5,10 @@ import { MoviesComponent } from './movies/movies.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 const routes : Routes = [
+  {path: 'category/create', component: CreateCategoryComponent},
   {path: 'movies/category/:id', component: MoviesComponent},
   {path: 'movies/category', component: CategoriesComponent},
   {path: 'movies/details/:movieId', component: MovieDetailsComponent},

@@ -35,6 +35,7 @@ export class MoviesComponent implements OnInit{
       this.movieService.getMovies().subscribe(
         (data) =>{
           this.movies = data
+          console.log(data)
         }
       )
       this.ActivatedRoute.params.subscribe(

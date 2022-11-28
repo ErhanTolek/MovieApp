@@ -16,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CreateMovieComponent } from './create-movie/create-movie.component'
 import { getCategorized } from './pipes/getCategorized';
 import { getPopular } from './pipes/getPopular';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { getPopular } from './pipes/getPopular';
     Filter,
     getCategorized,
     CreateMovieComponent,
-    getPopular
+    getPopular,
+    CreateCategoryComponent
   ],
   imports: [
     BrowserModule,

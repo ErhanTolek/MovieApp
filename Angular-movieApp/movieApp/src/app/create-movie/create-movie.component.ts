@@ -51,8 +51,7 @@ export class CreateMovieComponent implements OnInit {
 
     console.log(this.model)
     
-    
-    if(this.model.url != null){
+
       const newFilm : Movies = 
       {
         id : 0,
@@ -63,30 +62,6 @@ export class CreateMovieComponent implements OnInit {
         categoryId: this.model.categoryId
       }
       this.Movies.putMovies(newFilm).subscribe();
-    }
-    else{
-      const newFilm : Movies = 
-      {
-        id : 0,
-        name: this.model.title,
-        description: this.model.description,
-        imageurl: "assets/img/181-200x300.jpg",
-        isPopular: false,
-        categoryId: this.model.categoryId
-      }
-      this.Movies.putMovies(newFilm).subscribe(data => 
-        {
-          console.log(data)
-        });
-    }
-    
-    
-    
-  
-
-    
-    
-    this.router.navigateByUrl('movies')
-
+      this.router.navigateByUrl('movies')
   }
 }

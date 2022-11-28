@@ -19,8 +19,6 @@ export class MoviesServices{
                 for(let key in res){
                     movie.push({...res[key], id : key})  
                 };
-
-
                 return movie
             }
                 )
