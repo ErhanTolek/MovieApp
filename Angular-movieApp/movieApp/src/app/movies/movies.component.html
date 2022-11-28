@@ -11,9 +11,9 @@
     <div class="alert alert-warning">Film bulunmadi.</div>
 </ng-template>
 
-<ng-template [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: movies | getPopular}"></ng-template>
+<ng-template *ngIf="(movies | getPopular).length > 0" [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: movies | getPopular}"></ng-template>
 
-<div class="card mb-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
+<div class="card mb-3 mt-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
     <div class="row" >
         <div class="col-sm-3">
             <img class="img-fluid rounded-start" [src]="item.imageurl" >

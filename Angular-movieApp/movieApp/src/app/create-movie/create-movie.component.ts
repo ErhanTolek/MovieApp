@@ -28,7 +28,7 @@ export class CreateMovieComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.Categoryservice.category.subscribe(
+    this.Categoryservice.getCategory().subscribe(
       data => {
         this.categories = data
       }

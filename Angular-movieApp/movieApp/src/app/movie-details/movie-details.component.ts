@@ -38,6 +38,6 @@ export class MovieDetailsComponent implements OnInit {
   }
   deleteMovie(id : any){
     this.movies.deleteMovies(id).subscribe();
-    this.router.navigateByUrl('')
+    this.router.navigateByUrl('movies')
   }
 }

@@ -40,7 +40,6 @@ export class MoviesComponent implements OnInit{
       )
       this.ActivatedRoute.params.subscribe(
         params => {
-          
           this.categoryId = params['id'];
           console.log(this.categoryId)
         }

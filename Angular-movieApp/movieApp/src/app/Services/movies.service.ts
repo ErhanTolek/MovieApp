@@ -30,7 +30,7 @@ export class MoviesServices{
     }
     
     deleteMovies(id : any): Observable<Movies[]>{
-        const movieUrl = `http://localhost:3000/movies/${id}`    
+        const movieUrl = `https://movieapp-204f3-default-rtdb.firebaseio.com/movies/${id}.json`    
         return this.http.delete<Movies[]>(movieUrl)
     }
 }
