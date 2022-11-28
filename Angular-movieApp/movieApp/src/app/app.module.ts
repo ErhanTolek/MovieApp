@@ -17,6 +17,7 @@ import { CreateMovieComponent } from './create-movie/create-movie.component'
 import { getCategorized } from './pipes/getCategorized';
 import { getPopular } from './pipes/getPopular';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
     getCategorized,
     CreateMovieComponent,
     getPopular,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

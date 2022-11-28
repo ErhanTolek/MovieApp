@@ -6,8 +6,10 @@ import { CategoriesComponent } from './categories/categories.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
+import { AuthComponent } from './auth/auth.component';
 
 const routes : Routes = [
+  {path: 'login', component: AuthComponent},
   {path: 'category/create', component: CreateCategoryComponent},
   {path: 'movies/category/:id', component: MoviesComponent},
   {path: 'movies/category', component: CategoriesComponent},
