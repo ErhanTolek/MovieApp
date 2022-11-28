@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Category, Categories } from '../models/CategoriesModel';
+import { Category} from '../models/CategoriesModel';
 import { CategoryServices } from '../Services/category.service';
 
 @Component({
@@ -29,10 +29,7 @@ export class CategoriesComponent implements OnInit {
     
   }
   
-  categories1 = new Categories()
-  getCategory(){
-    return this.categories1.categories
-  }
+  
   selectCategory(item?: Category){
     if(item){
       this.selectedCategory = item

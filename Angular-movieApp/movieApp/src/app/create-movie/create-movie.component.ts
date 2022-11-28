@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
-import { Categories, Category } from '../models/CategoriesModel';
+import { Category } from '../models/CategoriesModel';
 import { Movies } from '../models/model';
 import { MoviesComponent } from '../movies/movies.component';
 import { CategoryServices } from '../Services/category.service';

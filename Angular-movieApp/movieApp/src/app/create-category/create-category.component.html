@@ -1,9 +1,9 @@
 <p>create-category works!</p>
 
-<form #form="ngForm">
+<form #form="ngForm" (submit)="createCategory()">
     <div class="form-group">
         <label for="categoryName" >Category Name</label>
-        <input class="form-control mt-2" type="text" placeholder="Name...">
+        <input #categoryName name="categoryName" [(ngModel)]="category_model.categorie" class="form-control mt-2" type="text" placeholder="Name...">
     </div>
     <button type="submit" class="btn btn-primary mt-3">Add Category</button>
 </form>
