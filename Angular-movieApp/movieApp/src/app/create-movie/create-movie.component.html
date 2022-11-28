@@ -40,16 +40,10 @@
     <div class="form-group mt-4">
         <label for="">Image URL</label>
         <input
-        [formControl]="url"
         type="url" 
         class="form-control mt-1" 
         name="url" id="" placeholder="Movie/Image/Url"
         >
-        <div>
-            <div *ngIf="url.errors['required'] && form.submitted" class="alert alert-danger mt-1">
-                url is required.
-            </div>
-        </div>
     </div>
 
 

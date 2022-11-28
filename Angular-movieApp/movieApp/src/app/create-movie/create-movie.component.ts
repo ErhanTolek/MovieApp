@@ -21,7 +21,7 @@ export class CreateMovieComponent implements OnInit {
   model: any = {
     categoryId: -1
   };
-  url = new FormControl('', Validators.required);
+  
 
   constructor(private Categoryservice : CategoryServices, private Movies:MoviesServices, private router: Router) {
 
@@ -74,7 +74,10 @@ export class CreateMovieComponent implements OnInit {
         isPopular: false,
         categoryId: this.model.categoryId
       }
-      this.Movies.putMovies(newFilm).subscribe();
+      this.Movies.putMovies(newFilm).subscribe(data => 
+        {
+          console.log(data)
+        });
     }
     
     

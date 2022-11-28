@@ -12,7 +12,7 @@ export class Model{
 }
 
  export interface Movies{
-    id: number;
+    id: any;
     name: any;
     description : any;
     imageurl: any;
