@@ -8,5 +8,9 @@
       <input required type="password" ngModel name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
     </div>
     <button  type="submit" class="btn btn-primary m-2">{{loginPage ? 'Login' : 'Sign-Up'}}</button>
-    <button (click)="toggleLoginMood()" class="btn border m-2 text-primary">Switch {{loginPage ? 'Sign-Up' : 'Login'}}</button>
+    <button type="button" (click)="toggleLoginMood()" class="btn border m-2 text-primary">Switch {{loginPage ? 'Sign-Up' : 'Login'}}</button>
 </form>
+
+<div>
+  <div *ngIf="error != ''" class="alert alert-danger">{{error}}</div>
+</div>
