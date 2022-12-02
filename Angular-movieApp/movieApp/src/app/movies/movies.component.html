@@ -1,38 +1,54 @@
-<div >
-    <div *ngIf="(movies | getCategorized : categoryId | filter : searchText).length > 0; then Title else NoneFilm"></div>
-</div>
-<div>
-    <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search...">
-</div>
-<ng-template #Title>
-        <h1>{{title}}</h1>
-</ng-template>
-<ng-template #NoneFilm>
-    <div class="alert alert-warning">Film bulunmadi.</div>
-</ng-template>
-
-<ng-template *ngIf="(movies | getPopular).length > 0" [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: movies | getPopular}"></ng-template>
-
-<div class="card mb-3 mt-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
-    <div class="row" >
-        <div class="col-sm-3">
-            <img class="img-fluid rounded-start" [src]="item.imageurl" >
+<div class="container my-3">
+    <div class="row">
+      <div class="col-sm-3">
+        <app-categories></app-categories>
+      </div>
+      <div class="col-sm-9">
+        <div >
+            <div *ngIf="(movies | getCategorized : categoryId | filter : searchText).length > 0; then Title else NoneFilm"></div>
         </div>
-        <div class="col-sm-9">
-            <div class="card-body">
-                <h5 class="card-title">{{item.name}}</h5>
-                <p class="card-text">{{item.description  | summary : 10}}</p>
-                
-                <div>
-                    <a 
-                    [routerLink]="['/movies/details', item.id]"
-                     class="btn btn-outline-primary">Details</a>
-                    <button (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
+        <div>
+            <input class="form-control" [(ngModel)]="searchText" type="text" placeholder="Search...">
+        </div>
+        <ng-template #Title>
+                <h1>{{title}}</h1>
+        </ng-template>
+        <ng-template #NoneFilm>
+            <div class="alert alert-warning">Film bulunmadi.</div>
+        </ng-template>
+        
+        <ng-template *ngIf="(movies | getPopular).length > 0" [ngTemplateOutlet]="popularFilm" [ngTemplateOutletContext]="{popularmovies: movies | getPopular}"></ng-template>
+        
+        <div class="card mb-3 mt-3" *ngFor="let item of movies | filter : searchText | getCategorized : categoryId">
+            <div class="row" >
+                <div class="col-sm-3">
+                    <img class="img-fluid rounded-start" [src]="item.imageurl" >
+                </div>
+                <div class="col-sm-9">
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item.description  | summary : 10}}</p>
+                        
+                        <div>
+                            <a 
+                            [routerLink]="['/movies/details', item.id]"
+                             class="btn btn-outline-primary">Details</a>
+                            <button (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+      </div>
     </div>
-</div>
+    
+  </div>
+
+
+
+
+
+
 
 
 

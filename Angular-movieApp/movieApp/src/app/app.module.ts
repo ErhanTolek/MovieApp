@@ -11,13 +11,14 @@ import { SummaryPipe } from './pipes/summary';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Filter } from './pipes/filter';
 import { AlertifyService } from './Services/alertify.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { CreateMovieComponent } from './create-movie/create-movie.component'
 import { getCategorized } from './pipes/getCategorized';
 import { getPopular } from './pipes/getPopular';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptor } from './Services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AuthComponent } from './auth/auth.component';
     ReactiveFormsModule
   ],
   providers: [
-    AlertifyService
+    AlertifyService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

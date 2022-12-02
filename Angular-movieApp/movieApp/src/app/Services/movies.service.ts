@@ -1,15 +1,19 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { first, map, Observable, Subject } from "rxjs";
 import { Movies } from "../models/model";
+import { AuthService } from "./auth.service";
 
 @Injectable()
-export class MoviesServices{
+export class MoviesServices implements OnInit{
 
-    constructor(private http : HttpClient){}
+    constructor(private http : HttpClient, private auth : AuthService){}
+    ngOnInit(): void {
+    }
     movies : Movies[] = []
     url = "http://localhost:3000/movies";
     url_firebase = "https://movieapp-204f3-default-rtdb.firebaseio.com/"
+    token = "";
     
     getMovies(): Observable<Movies[]>{
         return this.http.get<Movies[]>(this.url_firebase + "/movies.json").pipe(

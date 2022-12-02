@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../Services/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { AuthService } from '../Services/auth.service';
 export class AuthComponent implements OnInit {
   loginPage : boolean = false;
   error : string = '';
-  constructor(private authService  : AuthService) { 
+  constructor(private authService  : AuthService, private router : Router) { 
     console.log(this.loginPage)
   }
 
@@ -30,17 +31,23 @@ export class AuthComponent implements OnInit {
           {
             next: (v) => console.log(v),
             error: (e: HttpErrorResponse) => {
-              console.error(e.error.error?.message)
               this.error = e.error.error?.message
             },
         }
         )
+        this.router.navigateByUrl('movies')
       }
       
       else{
         this.authService.SignIn(form.value.email, form.value.password).subscribe(
-          res => console.log(res), err => console.log(err)
+          {
+            next: (v) => console.log(v),
+            error: (e: HttpErrorResponse) => {
+              this.error = e.error.error?.message
+            }
+          }
         )
+        
       }
       
     }
