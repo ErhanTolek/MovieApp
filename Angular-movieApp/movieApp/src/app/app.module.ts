@@ -19,6 +19,7 @@ import { getPopular } from './pipes/getPopular';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './Services/auth.interceptor';
+import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AuthInterceptor } from './Services/auth.interceptor';
     CreateMovieComponent,
     getPopular,
     CreateCategoryComponent,
-    AuthComponent
+    AuthComponent,
+    MovieHomeComponent
   ],
   imports: [
     BrowserModule,

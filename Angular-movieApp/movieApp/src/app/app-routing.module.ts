@@ -7,16 +7,21 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { CreateMovieComponent } from './create-movie/create-movie.component';
 import { CreateCategoryComponent } from './create-category/create-category.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './guards/auth.guard';
+import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
 
 const routes : Routes = [
-  {path: 'login', component: AuthComponent},
-  {path: 'category/create', component: CreateCategoryComponent},
-  {path: 'movies/category/:id', component: MoviesComponent},
-  {path: 'movies/category', component: CategoriesComponent},
-  {path: 'movies/details/:movieId', component: MovieDetailsComponent},
-  {path: 'movies/create', component: CreateMovieComponent},
-  {path: 'movies', component: MoviesComponent },
   {path: '', redirectTo: 'movies', pathMatch:'full'},
+  {path: 'movies', component: MovieHomeComponent, canActivate:[AuthGuard],children:[
+    {path: '', component:MoviesComponent},
+    {path: 'category/:id', component: MoviesComponent},
+    {path: 'category', component: CategoriesComponent},
+    {path: 'details/:movieId', component: MovieDetailsComponent},
+    {path: 'create', component: CreateMovieComponent},
+  ]},
+  {path: 'login', component: AuthComponent},
+  {path: 'category/create', component: CreateCategoryComponent, canActivate:[AuthGuard]},
+  
   
   
 ];
