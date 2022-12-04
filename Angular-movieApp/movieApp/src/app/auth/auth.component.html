@@ -13,13 +13,9 @@
       <button  type="submit" class="btn btn-primary m-2">{{loginPage ? 'Login' : 'Sign-Up'}}</button>
       <button type="button" (click)="toggleLoginMood()" class="btn border m-2 text-primary">Switch {{loginPage ? 'Sign-Up' : 'Login'}}</button>
   </form>
-  <div *ngIf="loading" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
-  </div>
+  <app-loading [loading]="loading"></app-loading>
   
-  <div>
-    <div *ngIf="error != ''" class="alert alert-danger">{{error}}</div>
-  </div>
+  <app-error *ngIf="error" [message]="error"></app-error>
 
   </div>
 </div>

@@ -20,6 +20,8 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { AuthComponent } from './auth/auth.component';
 import { AuthInterceptor } from './Services/auth.interceptor';
 import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
+import { ErrorComponent } from './common/error/error.component';
+import { LoadingComponent } from './common/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
     getPopular,
     CreateCategoryComponent,
     AuthComponent,
-    MovieHomeComponent
+    MovieHomeComponent,
+    ErrorComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

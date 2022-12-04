@@ -76,7 +76,7 @@ export class AuthComponent implements OnInit {
       this.loading = false;
       this.router.navigate(['/movies']);
     }, err => {
-      this.error = err;     
+      this.error = err.error.error?.message;     
       this.loading = false;
     })
 
