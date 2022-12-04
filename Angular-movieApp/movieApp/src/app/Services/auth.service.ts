@@ -56,7 +56,8 @@ export class AuthService {
     )
   }
   LogOut(){
-    this.user.next(null)
+    this.user.next(null);
+    localStorage.removeItem("user");
   }
 
   AuthHandler(email: string, localId: string, idToken: string, expiresIn: number){
