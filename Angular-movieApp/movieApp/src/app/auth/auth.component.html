@@ -15,7 +15,7 @@
   </form>
   <app-loading [loading]="loading"></app-loading>
   
-  <app-error *ngIf="error" [message]="error"></app-error>
+  <app-error *ngIf="error" (close)="closeError()" [message]="error"></app-error>
 
   </div>
 </div>
