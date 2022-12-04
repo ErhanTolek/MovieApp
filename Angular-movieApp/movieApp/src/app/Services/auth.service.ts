@@ -21,15 +21,15 @@ export class AuthService {
     }).pipe(
       tap(
         (response) =>{
-          const expirationDate = new Date(new Date().getTime() + (+response.expiresIn * 1000))
-          const user = new User(
-            response.email,
-            response.localId,
-            response.idToken,
-            expirationDate
-          );
-        this.user.next(user)
-
+        //   const expirationDate = new Date(new Date().getTime() + (+response.expiresIn * 1000))
+        //   const user = new User(
+        //     response.email,
+        //     response.localId,
+        //     response.idToken,
+        //     expirationDate
+        //   );
+        // this.user.next(user)
+        this.AuthHandler(response.email, response.localId, response.idToken, +response.expiresIn)
         }
       )
     )
@@ -42,20 +42,53 @@ export class AuthService {
     }).pipe(
       tap(
         (response) =>{
-          const expirationDate = new Date(new Date().getTime() + (+response.expiresIn * 1000))
-          const user = new User(
-            response.email,
-            response.localId,
-            response.idToken,
-            expirationDate
-          );
-        this.user.next(user)
-
+        //   const expirationDate = new Date(new Date().getTime() + (+response.expiresIn * 1000))
+        //   const user = new User(
+        //     response.email,
+        //     response.localId,
+        //     response.idToken,
+        //     expirationDate
+        //   );
+        // this.user.next(user)
+        this.AuthHandler(response.email, response.localId, response.idToken, +response.expiresIn)
         }
       )
     )
   }
   LogOut(){
     this.user.next(null)
+  }
+
+  AuthHandler(email: string, localId: string, idToken: string, expiresIn: number){
+    const expirationDate = new Date(new Date().getTime() + (expiresIn * 1000))
+    const user = new User(
+      email,
+      localId,
+      idToken,
+      expirationDate
+    );
+    this.user.next(user)
+    localStorage.setItem("user", JSON.stringify(user))
+
+  }
+
+  AutoLogin(){
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if(!savedUser){
+      return;
+    }
+    const user = new User(
+      savedUser.email,
+      savedUser.id,
+      savedUser._token,
+      new Date(savedUser._tokenExpirationDate)
+    );
+    if(user.token){
+      this.user.next(user)
+    }
+    
+    
+    
+
   }
 }
