@@ -55,4 +55,7 @@ export class AuthService {
       )
     )
   }
+  LogOut(){
+    this.user.next(null)
+  }
 }

@@ -26,9 +26,15 @@
         </li>
       </ul>
       <span class="text-white">{{date | date}}</span>
-      <div>
+      <div *ngIf="!isAuthenticated">
         <a class="text-white m-2"
         routerLink="/login">Login</a>
+      </div>
+      <div *ngIf="isAuthenticated">
+        <a class="text-white m-2"
+        (click)="LogOut()"
+        routerLink="/login"
+        >Logout</a>
       </div>
     </div>
   </nav>
