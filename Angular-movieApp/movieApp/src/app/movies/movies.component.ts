@@ -28,12 +28,17 @@ export class MoviesComponent implements OnInit{
 
   movies: Movies[]= [];
   
-
+  userId : string;
+  listedMovieId: string[] = [];
 
   alertify1: AlertifyService = new AlertifyService;
   constructor(private alertify2: AlertifyService, private ActivatedRoute: ActivatedRoute, private movieService : MoviesServices, private authService: AuthService){
   }
   ngOnInit(): void {
+    this.authService.user.subscribe(
+      user => {
+        this.userId = user.id
+      })
       this.movieService.getMovies().subscribe(
         (data) =>{
           this.movies = data
@@ -45,6 +50,9 @@ export class MoviesComponent implements OnInit{
           this.categoryId = params['id'];
           console.log(this.categoryId)
         }
+      )
+      this.movieService.getListedMoviesId(this.userId).subscribe(
+        data => this.listedMovieId = data
       )
       }
 
@@ -58,6 +66,10 @@ export class MoviesComponent implements OnInit{
   getPopularFilm(){
     return this.movies.filter(i => i.isPopular == true)
   }
+
+  listedState(movieId: string){
+    return this.listedMovieId.findIndex(m => m === movieId)
+  }
   
   addList($event: any,movie: Movies){
     if($event.target.classList.contains('btn-primary')){
@@ -65,15 +77,10 @@ export class MoviesComponent implements OnInit{
       $event.target.classList.add("btn-danger");
       $event.target.innerText = 'Discard from List';
       this.alertify2.alertSuccess(movie.name + 'listeye eklendi')
-      let userId : string;
-      this.authService.user.subscribe(
-        user => {
-          userId = user.id
-        }
-      )
+      
       const list: movieList = {
         movieId: movie.id,
-        userId: userId
+        userId: this.userId
       }
       this.movieService.add2List(list).subscribe(data => console.log(data))
 
@@ -82,13 +89,8 @@ export class MoviesComponent implements OnInit{
       $event.target.classList.add("btn-primary");
       $event.target.innerText = 'Add to List';
       alertify.error(movie.name + 'listeden çıkarıldı')
-      let userId : string;
-      this.authService.user.subscribe(
-        user => {
-          userId = user.id
-        }
-      )
-      this.movieService.removeFromList(userId, movie.id).subscribe(
+      
+      this.movieService.removeFromList(this.userId, movie.id).subscribe(
         data => console.log(data)
       )
 

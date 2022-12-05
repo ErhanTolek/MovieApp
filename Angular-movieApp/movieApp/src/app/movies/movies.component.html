@@ -28,7 +28,8 @@
                             <a 
                             [routerLink]="['/movies/details', item.id]"
                              class="btn btn-outline-primary">Details</a>
-                            <button (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
+                            <button *ngIf="!listedState(item.id)" (click)="addList($event,item)" class="btn btn-primary ms-1">Add to List</button>
+                            <button *ngIf="listedState(item.id)" (click)="addList($event,item)" class="btn btn-danger ms-1">Discard from List</button>
                         </div>
                     </div>
                 </div>

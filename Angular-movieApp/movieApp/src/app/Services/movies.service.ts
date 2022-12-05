@@ -38,8 +38,15 @@ export class MoviesServices implements OnInit{
     removeFromList(userId: string, movieId: string): Observable<movieList>{
         return this.http.delete<movieList>(this.url_firebase+`/users/${userId}/userList/${movieId}.json`)
     }
-    getListedMovies(userId: string): Observable<string[]>{
-        return this.http.get<string[]>(this.url_firebase+ `/users/${userId}/userList`).pipe(
+    getListedMoviesId(userId: string): Observable<string[]>{
+        return this.http.get<string[]>(this.url_firebase+ `/users/${userId}/userList.json`).pipe(
+            map(data=>{
+                const idList:string[] = []
+                for(let key in data){
+                    idList.push(key)
+                }
+                return idList
+            }),
             tap(data => console.log(data))
         )
     }

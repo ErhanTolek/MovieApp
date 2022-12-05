@@ -37,6 +37,6 @@ export class MovieComponent implements OnInit {
   
   
   getListedMovies(){
-    return this.movies.filter(movies => movies.id == this.listedMovieId)
+    return this.movies.filter(movies => movies.id == this.listedMovieId > -1)
   }
 }
