@@ -10,11 +10,31 @@
         <li class="nav-item">
           <a 
           routerLinkActive="active current"
-          routerLink="/movies/category"
+          routerLink="/movie"
           class="nav-link"
-          >Movies</a>
+          >MyList</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          routerLinkActive="active current"
+          routerLink="/movies/create">Create Movie</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+          routerLinkActive="active current"
+          routerLink="/category/create">Create Category</a>
         </li>
       </ul>
       <span class="text-white">{{date | date}}</span>
+      <div *ngIf="!isAuthenticated">
+        <a class="text-white m-2"
+        routerLink="/login">Login</a>
+      </div>
+      <div *ngIf="isAuthenticated">
+        <a class="text-white m-2"
+        (click)="LogOut()"
+        routerLink="/login"
+        >Logout</a>
+      </div>
     </div>
   </nav>
