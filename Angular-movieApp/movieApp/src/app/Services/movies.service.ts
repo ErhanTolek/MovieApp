@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, OnInit } from "@angular/core";
-import { first, map, Observable, Subject } from "rxjs";
+import { first, map, Observable, Subject, tap } from "rxjs";
 import { Movies } from "../models/model";
+import { movieList } from "../models/movieList";
 import { AuthService } from "./auth.service";
 
 @Injectable()
@@ -10,7 +11,6 @@ export class MoviesServices implements OnInit{
     constructor(private http : HttpClient, private auth : AuthService){}
     ngOnInit(): void {
     }
-    movies : Movies[] = []
     url = "http://localhost:3000/movies";
     url_firebase = "https://movieapp-204f3-default-rtdb.firebaseio.com/"
     token = "";
@@ -26,6 +26,21 @@ export class MoviesServices implements OnInit{
                 return movie
             }
                 )
+        )
+    }
+
+    add2List(list : movieList): Observable<movieList>{
+        return this.http.post<movieList>(this.url_firebase + "/users/" + list.userId + "/userList/" + list.movieId + ".json",{
+            dateAdded: new Date().getTime()
+        })
+
+    }
+    removeFromList(userId: string, movieId: string): Observable<movieList>{
+        return this.http.delete<movieList>(this.url_firebase+`/users/${userId}/userList/${movieId}.json`)
+    }
+    getListedMovies(userId: string): Observable<string[]>{
+        return this.http.get<string[]>(this.url_firebase+ `/users/${userId}/userList`).pipe(
+            tap(data => console.log(data))
         )
     }
 

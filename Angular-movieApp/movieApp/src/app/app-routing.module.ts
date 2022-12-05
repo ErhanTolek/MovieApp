@@ -9,6 +9,7 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
 import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
+import { MovieComponent } from './movies/movie/movie.component';
 
 const routes : Routes = [
   {path: '', redirectTo: 'movies', pathMatch:'full'},
@@ -21,6 +22,7 @@ const routes : Routes = [
   ]},
   {path: 'login', component: AuthComponent},
   {path: 'category/create', component: CreateCategoryComponent, canActivate:[AuthGuard]},
+  {path: 'movie', component: MovieComponent, canActivate:[AuthGuard]}
   
   
   

@@ -5,8 +5,10 @@ import { pipe } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Category } from '../models/CategoriesModel';
 import { Films, Model, Movies } from '../models/model';
+import { movieList } from '../models/movieList';
 import { Filter } from '../pipes/filter';
 import { AlertifyService } from '../Services/alertify.service';
+import { AuthService } from '../Services/auth.service';
 import { MoviesServices } from '../Services/movies.service';
 
 declare let alertify : any;
@@ -29,7 +31,7 @@ export class MoviesComponent implements OnInit{
 
 
   alertify1: AlertifyService = new AlertifyService;
-  constructor(private alertify2: AlertifyService, private ActivatedRoute: ActivatedRoute, private movieService : MoviesServices){
+  constructor(private alertify2: AlertifyService, private ActivatedRoute: ActivatedRoute, private movieService : MoviesServices, private authService: AuthService){
   }
   ngOnInit(): void {
       this.movieService.getMovies().subscribe(
@@ -62,14 +64,34 @@ export class MoviesComponent implements OnInit{
       $event.target.classList.remove("btn-primary");
       $event.target.classList.add("btn-danger");
       $event.target.innerText = 'Discard from List';
-
-
       this.alertify2.alertSuccess(movie.name + 'listeye eklendi')
+      let userId : string;
+      this.authService.user.subscribe(
+        user => {
+          userId = user.id
+        }
+      )
+      const list: movieList = {
+        movieId: movie.id,
+        userId: userId
+      }
+      this.movieService.add2List(list).subscribe(data => console.log(data))
+
     } else{
       $event.target.classList.remove("btn-danger");
       $event.target.classList.add("btn-primary");
       $event.target.innerText = 'Add to List';
       alertify.error(movie.name + 'listeden çıkarıldı')
+      let userId : string;
+      this.authService.user.subscribe(
+        user => {
+          userId = user.id
+        }
+      )
+      this.movieService.removeFromList(userId, movie.id).subscribe(
+        data => console.log(data)
+      )
+
     }
   }
   

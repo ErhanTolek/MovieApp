@@ -1,1 +1,13 @@
-
+<div class="card mb-3 mt-3" *ngFor="let item of getListedMovies()">
+    <div class="row" >
+        <div class="col-sm-3">
+            <img class="img-fluid rounded-start" [src]="item.imageurl" >
+        </div>
+        <div class="col-sm-9">
+            <div class="card-body">
+                <h5 class="card-title">{{item.name}}</h5>
+                <p class="card-text">{{item.description  | summary : 10}}</p>
+            </div>
+        </div>
+    </div>
+</div>
