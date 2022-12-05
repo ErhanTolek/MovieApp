@@ -68,7 +68,7 @@ export class MoviesComponent implements OnInit{
   }
 
   listedState(movieId: string){
-    return this.listedMovieId.findIndex(m => m === movieId)
+    return this.listedMovieId.findIndex(m => m === movieId) > -1
   }
   
   addList($event: any,movie: Movies){

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { map, tap } from 'rxjs';
+import { AuthService } from 'src/app/Services/auth.service';
 import { MoviesServices } from 'src/app/Services/movies.service';
 import { Model, Movies } from '../../models/model';
 
@@ -10,33 +12,32 @@ import { Model, Movies } from '../../models/model';
 })
 export class MovieComponent implements OnInit {
   model = new Model();
-  listedMovieId: any= [];
-  movies : Movies[] = []
-  constructor(private movieService : MoviesServices){
+  listedMovieId: string[]= [];
+  listedMovies : Movies[] = [];
+  movies : Movies[] = [];
+  userId : string;
+  constructor(private movieService : MoviesServices,private authService: AuthService){
     
   }
   ngOnInit(): void {
-    
-      // this.movieService.getListedMovies().subscribe(
-      //   data => {
-      //     for(let i=0;i<data.length; i++){
-      //       this.listedMovieId.push(data[i].movieId)  
-            
-      //     }
-      //     console.log(this.listedMovieId)
-      //   }
-      // )
+      this.authService.user.subscribe(
+        user => {
+          this.userId = user.id
+        }
+      )
+      this.movieService.getMovies().subscribe(
+        data => {
+          this.movies = data
+        }
+      )
+
+      this.movieService.getListedMoviesId(this.userId).subscribe(
+        data => {
+          this.listedMovieId = data
+        }
+      )
   
-    
-      // this.movieService.getMovies().subscribe(
-      //   data =>{
-      //     this.movies = data
-      //   }
-      // )
     }
   
   
-  getListedMovies(){
-    return this.movies.filter(movies => movies.id == this.listedMovieId > -1)
-  }
 }

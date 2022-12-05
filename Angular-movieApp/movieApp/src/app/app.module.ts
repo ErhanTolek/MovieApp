@@ -22,6 +22,7 @@ import { AuthInterceptor } from './Services/auth.interceptor';
 import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
 import { ErrorComponent } from './common/error/error.component';
 import { LoadingComponent } from './common/loading/loading.component';
+import { getListed } from './pipes/getListed';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoadingComponent } from './common/loading/loading.component';
     AuthComponent,
     MovieHomeComponent,
     ErrorComponent,
-    LoadingComponent
+    LoadingComponent,
+    getListed
   ],
   imports: [
     BrowserModule,

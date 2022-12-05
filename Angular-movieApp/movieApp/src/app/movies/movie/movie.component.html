@@ -1,4 +1,4 @@
-<div class="card mb-3 mt-3" *ngFor="let item of getListedMovies()">
+<div class="card mb-3 mt-3" *ngFor="let item of movies | getListed : listedMovieId ">
     <div class="row" >
         <div class="col-sm-3">
             <img class="img-fluid rounded-start" [src]="item.imageurl" >
