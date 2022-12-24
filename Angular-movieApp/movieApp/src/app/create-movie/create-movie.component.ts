@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { CategoriesComponent } from '../categories/categories.component';
@@ -13,8 +13,10 @@ import { MoviesServices } from '../Services/movies.service';
   templateUrl: './create-movie.component.html',
   styleUrls: ['./create-movie.component.css'],
   providers: [CategoryServices,MoviesServices,Validators]
+  
 })
 export class CreateMovieComponent implements OnInit {
+  @ViewChild('form', {static: true}) form : NgForm;
   categories: Category[];
   movies: Movies[];
   NewMovies : Movies[] = [];
@@ -63,5 +65,12 @@ export class CreateMovieComponent implements OnInit {
       }
       this.Movies.putMovies(newFilm).subscribe();
       this.router.navigateByUrl('movies')
+  }
+  canExit():boolean{
+    let response : boolean = true
+    if(this.form.dirty && !this.form.pristine){
+     response = confirm('You have unsaved changes. Do you want leave anyway?')
+    }
+    return response
   }
 }

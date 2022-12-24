@@ -10,6 +10,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthGuard } from './guards/auth.guard';
 import { MovieHomeComponent } from './movies/movie-home/movie-home.component';
 import { MovieComponent } from './movies/movie/movie.component';
+import { DeactivateGuard } from './guards/deactivate.guard';
 
 const routes : Routes = [
   {path: '', redirectTo: 'movies', pathMatch:'full'},
@@ -18,10 +19,10 @@ const routes : Routes = [
     {path: 'category/:id', component: MoviesComponent},
     {path: 'category', component: CategoriesComponent},
     {path: 'details/:movieId', component: MovieDetailsComponent},
-    {path: 'create', component: CreateMovieComponent},
+    {path: 'create', component: CreateMovieComponent, canDeactivate:[DeactivateGuard]},
   ]},
   {path: 'login', component: AuthComponent},
-  {path: 'category/create', component: CreateCategoryComponent, canActivate:[AuthGuard]},
+  {path: 'category/create', component: CreateCategoryComponent,canDeactivate:[DeactivateGuard], canActivate:[AuthGuard]},
   {path: 'movie', component: MovieComponent, canActivate:[AuthGuard]}
   
   
